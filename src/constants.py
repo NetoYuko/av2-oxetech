@@ -1,0 +1,9 @@
+AGED_BRIE = "Aged Brie"
+BACKSTAGE_PASS = "Backstage passes to a TAFKAL80ETC concert"
+SULFURAS = "Sulfuras, Hand of Ragnaros"
+
+MIN_QUALITY = 0
+MAX_QUALITY = 50
+
+BACKSTAGE_FIRST_LIMIT = 11
+BACKSTAGE_SECOND_LIMIT = 6
