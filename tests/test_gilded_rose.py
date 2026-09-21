@@ -110,3 +110,12 @@ def test_backstage_perde_toda_qualidade_apos_o_show():
 
     assert item.sell_in == -1
     assert item.quality == 0
+
+def test_backstage_teto_limite_50():
+    item = Item("Backstage passes to a TAFKAL80ETC concert", 4, 49)
+    loja = GildedRose([item])
+
+    loja.att()
+
+    assert item.sell_in == 3
+    assert item.quality == 50
