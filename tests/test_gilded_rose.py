@@ -1,5 +1,5 @@
-from gilded_rose import GildedRose
-from gilded_rose import Item
+from src.gilded_rose import GildedRose
+from src.item import Item
 
 # Teste para item normal
 
