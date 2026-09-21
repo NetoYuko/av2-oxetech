@@ -17,6 +17,28 @@ MAX_QUALITY = 50
 BACKSTAGE_FIRST_LIMIT = 11
 BACKSTAGE_SECOND_LIMIT = 6
 
+class AgedBrieItem(Item):
+    def update(self):
+        self.sell_in -= 1
+        if self.quality < MAX_QUALITY:
+            self.quality += 1
+        if self.sell_in < 0 and self.quality < MAX_QUALITY:
+            self.quality += 1
+
+class BackstagePassItem(Item):
+    def update(self):
+        if self.quality < MAX_QUALITY:
+            self.quality += 1
+        if self.sell_in < BACKSTAGE_FIRST_LIMIT and self.quality < MAX_QUALITY:
+            self.quality += 1
+        if self.sell_in < BACKSTAGE_SECOND_LIMIT and self.quality < MAX_QUALITY:
+            self.quality += 1
+            
+        self.sell_in -= 1
+        
+        if self.sell_in < 0:
+            self.quality = MIN_QUALITY
+
 class GildedRose(object):
     def __init__(self, items):
         self.items = items
@@ -27,32 +49,21 @@ class GildedRose(object):
                 continue
             
             if item.name == AGED_BRIE:
-                item.sell_in = item.sell_in - 1
-                if item.quality < MAX_QUALITY:
-                    item.quality = item.quality + 1
-                if item.sell_in < 0 and item.quality < MAX_QUALITY:
-                    item.quality = item.quality + 1
+                updater = AgedBrieItem(item.name, item.sell_in, item.quality)
+                updater.update()
+                item.sell_in = updater.sell_in
+                item.quality = updater.quality
                 continue
             
             if item.name == BACKSTAGE_PASS:
-                if item.quality < MAX_QUALITY:
-                    item.quality += 1
-                if item.sell_in < BACKSTAGE_FIRST_LIMIT and item.quality < MAX_QUALITY:
-                    item.quality += 1
-                if item.sell_in < BACKSTAGE_SECOND_LIMIT and item.quality < MAX_QUALITY:
-                    item.quality += 1
-                    
-                item.sell_in -= 1
-                
-                if item.sell_in < 0:
-                    item.quality = MIN_QUALITY
-                
+                updater = BackstagePassItem(item.name, item.sell_in, item.quality)
+                updater.update()
+                item.sell_in = updater.sell_in
+                item.quality = updater.quality
                 continue
             
             item.sell_in -= 1
-            
             if item.quality > MIN_QUALITY:
                 item.quality -= 1
-                
             if item.sell_in < 0 and item.quality > MIN_QUALITY:
                 item.quality -= 1
