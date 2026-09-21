@@ -1,5 +1,5 @@
-from item import Item
-from constants import MAX_QUALITY
+from src.item import Item
+from src.constants import MAX_QUALITY
 
 class AgedBrieItem(Item):
     def update(self):

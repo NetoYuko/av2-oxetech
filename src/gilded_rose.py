@@ -1,8 +1,8 @@
-from constants import SULFURAS, AGED_BRIE, BACKSTAGE_PASS
-from sulfuras_item import SulfurasItem
-from normal_item import NormalItem
-from aged_brie_item import AgedBrieItem
-from backstage_pass_item import BackstagePassItem
+from src.constants import SULFURAS, AGED_BRIE, BACKSTAGE_PASS
+from src.sulfuras_item import SulfurasItem
+from src.normal_item import NormalItem
+from src.aged_brie_item import AgedBrieItem
+from src.backstage_pass_item import BackstagePassItem
 
 class GildedRose(object):
     def __init__(self, items):

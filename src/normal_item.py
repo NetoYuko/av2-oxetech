@@ -1,5 +1,5 @@
-from item import Item
-from constants import MIN_QUALITY
+from src.item import Item
+from src.constants import MIN_QUALITY
 
 class NormalItem(Item):
     def update(self):

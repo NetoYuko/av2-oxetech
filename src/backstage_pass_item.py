@@ -1,5 +1,5 @@
-from item import Item
-from constants import (
+from src.item import Item
+from src.constants import (
     MAX_QUALITY, 
     MIN_QUALITY, 
     BACKSTAGE_FIRST_LIMIT, 
