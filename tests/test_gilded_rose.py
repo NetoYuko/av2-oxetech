@@ -150,3 +150,12 @@ def test_conjured_nao_pode_ter_qualidade_negativa():
     loja.update_quality()
 
     assert item.quality == 0
+
+def test_conjured_item_teto_50():
+    item = Item("Conjured Mana Cake", 10, 50)
+    loja = GildedRose([item])
+
+    loja.update_quality()
+
+    assert item.sell_in == 9
+    assert item.quality == 48
