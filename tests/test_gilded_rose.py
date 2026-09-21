@@ -119,3 +119,34 @@ def test_backstage_teto_limite_50():
 
     assert item.sell_in == 3
     assert item.quality == 50
+
+
+# Testes para Conjured Mana Cake
+
+def test_conjured_perde_duas_vezes_a_qualidade_antes_do_vencimento():
+    item = Item("Conjured Mana Cake", 5, 10)
+    loja = GildedRose([item])
+
+    loja.update_quality()
+
+    assert item.sell_in == 4
+    assert item.quality == 8
+
+
+def test_conjured_perde_quatro_vezes_a_qualidade_apos_o_vencimento():
+    item = Item("Conjured Mana Cake", 0, 10)
+    loja = GildedRose([item])
+
+    loja.update_quality()
+
+    assert item.sell_in == -1
+    assert item.quality == 6
+
+
+def test_conjured_nao_pode_ter_qualidade_negativa():
+    item = Item("Conjured Mana Cake", 0, 3)
+    loja = GildedRose([item])
+
+    loja.update_quality()
+
+    assert item.quality == 0
