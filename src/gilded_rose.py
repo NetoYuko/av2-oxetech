@@ -6,6 +6,13 @@ from src.backstage_pass_item import BackstagePassItem
 from src.conjured_item import ConjuredItem
 
 class GildedRose(object):
+    """Gerencia o inventário e atualiza a qualidade dos itens diariamente.
+
+    Args:
+        items (list[Item]): Itens do inventário que terão seus valores
+            atualizados.
+    """
+
     def __init__(self, items):
         self.items = items
 

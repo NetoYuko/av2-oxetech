@@ -7,6 +7,12 @@ from src.constants import (
 )
 
 class BackstagePassItem(Item):
+    """Representa um passe de backstage com qualidade variável.
+
+    A qualidade aumenta à medida que o concerto se aproxima e cai para zero
+    após a data de venda.
+    """
+
     def update(self):
         if self.quality < MAX_QUALITY:
             self.quality += 1

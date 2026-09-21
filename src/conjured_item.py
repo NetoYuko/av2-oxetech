@@ -3,6 +3,12 @@ from src.item import Item
 
 
 class ConjuredItem(Item):
+    """Representa um item conjurado que se deteriora em ritmo acelerado.
+
+    A qualidade diminui duas unidades por dia e o dobro disso após a data de
+    venda, respeitando o limite mínimo permitido.
+    """
+
     def update(self):
         self.sell_in -= 1
 
